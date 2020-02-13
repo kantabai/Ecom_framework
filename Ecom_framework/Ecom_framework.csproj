@@ -65,7 +65,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BaseClasses\" />
+    <Folder Include="ComponentHelper\" />
+    <Folder Include="Configuration\" />
+    <Folder Include="CustomException\" />
+    <Folder Include="DataDriven\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Keyword\" />
+    <Folder Include="PageObject\" />
+    <Folder Include="Reports\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Settings\" />
+    <Folder Include="TestScript\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,6 +9,7 @@ namespace Ecom_framework
         [TestMethod]
         public void TestMethod1()
         {
+            Console.WriteLine("hi");
         }
     }
 }
