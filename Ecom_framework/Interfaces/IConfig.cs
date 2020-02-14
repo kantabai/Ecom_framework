@@ -8,7 +8,8 @@ namespace Ecom_framework.Interfaces
 {
    public interface IConfig
     {
-        BrowserType? GetBrowser();
+       BrowserType? GetBrowser();
+        
         string Get_Email_address();
         string GetPassword();
         string GetWebsite();

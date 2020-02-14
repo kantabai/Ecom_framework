@@ -53,6 +53,9 @@
     <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="SeleniumExtras.PageObjects, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.PageObjects.3.11.0\lib\net45\SeleniumExtras.PageObjects.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -68,9 +71,21 @@
     <Compile Include="BaseClasses\BaseClass.cs" />
     <Compile Include="ComponentHelper\AssertHelper.cs" />
     <Compile Include="ComponentHelper\BrowserHelper.cs" />
+    <Compile Include="ComponentHelper\ButtonHelper.cs" />
+    <Compile Include="ComponentHelper\GenericHelper.cs" />
+    <Compile Include="ComponentHelper\GridHelper.cs" />
+    <Compile Include="ComponentHelper\JavaScriptExecutor.cs" />
+    <Compile Include="ComponentHelper\LinkHelper.cs" />
+    <Compile Include="ComponentHelper\NavigationHelper.cs" />
+    <Compile Include="ComponentHelper\RadioButtonHelper.cs" />
+    <Compile Include="ComponentHelper\TextBoxHelper.cs" />
+    <Compile Include="ComponentHelper\WindowHelper.cs" />
     <Compile Include="Configuration\AppConfigReader.cs" />
     <Compile Include="Configuration\BrowserType.cs" />
+    <Compile Include="CustomException\NoSuchKeywordFoundException.cs" />
+    <Compile Include="CustomException\NoSutiableDriverFound.cs" />
     <Compile Include="Interfaces\IConfig.cs" />
+    <Compile Include="PageObject\Home.cs" />
     <Compile Include="Settings\ObjectRepository.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,10 +95,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CustomException\" />
     <Folder Include="DataDriven\" />
     <Folder Include="Keyword\" />
-    <Folder Include="PageObject\" />
     <Folder Include="Reports\" />
     <Folder Include="Resources\" />
     <Folder Include="TestScript\" />
