@@ -72,6 +72,8 @@
     <Compile Include="ComponentHelper\AssertHelper.cs" />
     <Compile Include="ComponentHelper\BrowserHelper.cs" />
     <Compile Include="ComponentHelper\ButtonHelper.cs" />
+    <Compile Include="ComponentHelper\Dropdownhelper.cs" />
+    <Compile Include="ComponentHelper\FileUplaodhelper.cs" />
     <Compile Include="ComponentHelper\GenericHelper.cs" />
     <Compile Include="ComponentHelper\GridHelper.cs" />
     <Compile Include="ComponentHelper\JavaScriptExecutor.cs" />
@@ -85,8 +87,11 @@
     <Compile Include="CustomException\NoSuchKeywordFoundException.cs" />
     <Compile Include="CustomException\NoSutiableDriverFound.cs" />
     <Compile Include="Interfaces\IConfig.cs" />
+    <Compile Include="PageObject\contact_us.cs" />
     <Compile Include="PageObject\Home.cs" />
+    <Compile Include="PageObject\Sign_In_UI.cs" />
     <Compile Include="Settings\ObjectRepository.cs" />
+    <Compile Include="TestScript\Contactus_test.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -99,7 +104,6 @@
     <Folder Include="Keyword\" />
     <Folder Include="Reports\" />
     <Folder Include="Resources\" />
-    <Folder Include="TestScript\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

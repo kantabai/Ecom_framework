@@ -12,6 +12,7 @@ namespace Ecom_framework.ComponentHelper
 {
    public class GenericHelper
     {
+        private static IWebElement element;
         private static Func<IWebDriver, bool> WaitForWebElementFunc(By locator)
         {
             return ((x) =>
@@ -86,6 +87,30 @@ namespace Ecom_framework.ComponentHelper
             else
                 throw new NoSuchElementException("Element Not Found : " + locator.ToString());
         }
+
+        public static IWebElement uploadfile(By locator, string value)
+        {
+            if(IsElemetPresent(locator))
+            {
+                element = ObjectRepository.Driver.FindElement(locator);
+                element.SendKeys(value);
+            }
+            return element;
+        }
+        public static IWebElement Select_valuebytext(By locator,string value)
+        {
+            
+            if (IsElemetPresent(locator))
+            {
+                element = ObjectRepository.Driver.FindElement(locator);
+                SelectElement select = new SelectElement(element);
+                select.SelectByText(value);
+
+            }
+            return element;
+        }
+
+
         //chnage this code
         public static void TakeScreenShot(string filename = "Screen")
         {

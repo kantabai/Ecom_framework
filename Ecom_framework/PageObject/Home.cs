@@ -13,28 +13,32 @@ namespace Ecom_framework.PageObject
 {
     public class Home
     {
+
+        private static IWebDriver driver = BaseClass.driver;
         
-        private IWebDriver driver= BaseClass.InitWebdriver();
+        AppConfigReader obj = new AppConfigReader();
         [FindsBy(How=How.XPath,Using = "//a[text()='Contact us']")]
         private IWebElement contact_us { get; set; }
 
 
-        //public Home(IWebDriver _driver)
-        //{
-        //    PageFactory.InitElements(_driver, this);
-        //    this.driver = _driver;
-
-        //}
         public Home()
         {
+           
             PageFactory.InitElements(driver, this);
             
 
         }
-        public void navigate()
+        
+        protected internal void navigate()
         {
-
-            NavigationHelper.NavigateToUrl("http://automationpractice.com/index.php");
+            string URL = obj.GetWebsite();
+            NavigationHelper.NavigateToUrl(URL);
+            contact_us.Click();
+           // return new ContactUs();
+        }
+        public string Title
+        {
+            get { return driver.Title; }
         }
     }
 }

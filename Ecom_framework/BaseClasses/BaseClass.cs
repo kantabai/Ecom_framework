@@ -12,11 +12,14 @@ using Ecom_framework.Configuration;
 using Ecom_framework.CustomException;
 using Ecom_framework.ComponentHelper;
 using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
 namespace Ecom_framework.BaseClasses
 {
     [TestClass]
    public class BaseClass
     {
+
+        public static IWebDriver driver=InitWebdriver();
         private static FirefoxProfile GetFirefoxProfile()
         {
             FirefoxProfile profile = new FirefoxProfile();
@@ -63,52 +66,52 @@ namespace Ecom_framework.BaseClasses
 
         //[AssemblyInitialize]
         //[BeforeFeature()]
-        public static  IWebDriver InitWebdriver()
+        private static IWebDriver InitWebdriver()
         {
             ObjectRepository.Config = new AppConfigReader();
-           // Reporter.GetReportManager();
+            // Reporter.GetReportManager();
             //Reporter.AddTestCaseMetadataToHtmlReport(tc);
-            switch (ObjectRepository.Config.GetBrowser())
-            {
-                case BrowserType.Firefox:
-                    ObjectRepository.Driver = GetFirefoxDriver();
-                    //Logger.Info(" Using Firefox Driver  ");
+            
+                switch (ObjectRepository.Config.GetBrowser())
+                {
+                    case BrowserType.Firefox:
+                        ObjectRepository.Driver = GetFirefoxDriver();
+                        //Logger.Info(" Using Firefox Driver  ");
 
-                    break;
+                        break;
 
-                case BrowserType.Chrome:
-                    ObjectRepository.Driver = GetChromeDriver();
-                   // Logger.Info(" Using Chrome Driver  ");
-                    break;
+                    case BrowserType.Chrome:
+                        ObjectRepository.Driver = GetChromeDriver();
+                        // Logger.Info(" Using Chrome Driver  ");
+                        break;
 
-                //case BrowserType.IExplorer:
-                //    ObjectRepository.Driver = GetIEDriver();
-                //   // Logger.Info(" Using Internet Explorer Driver  ");
-                //    break;
+                    //case BrowserType.IExplorer:
+                    //    ObjectRepository.Driver = GetIEDriver();
+                    //   // Logger.Info(" Using Internet Explorer Driver  ");
+                    //    break;
 
-                //// Deprecated 
-                //case BrowserType.PhantomJs:
-                //    //ObjectRepository.Driver = GetPhantomJsDriver();
-                //  //  Logger.Info(" Using PhantomJs Driver  ");
-                //    break;
+                    //// Deprecated 
+                    //case BrowserType.PhantomJs:
+                    //    //ObjectRepository.Driver = GetPhantomJsDriver();
+                    //  //  Logger.Info(" Using PhantomJs Driver  ");
+                    //    break;
 
-                //case BrowserType.Edge:
-                //    ObjectRepository.Driver = GetEdgeDriver();
-                //    Logger.Info(" Using Edge Driver  ");
-                //    break;
+                    //case BrowserType.Edge:
+                    //    ObjectRepository.Driver = GetEdgeDriver();
+                    //    Logger.Info(" Using Edge Driver  ");
+                    //    break;
 
-                default:
-                    throw new NoSutiableDriverFound("Driver Not Found : " + ObjectRepository.Config.GetBrowser().ToString());
-            }
-            ObjectRepository.Driver.Manage().Cookies.DeleteAllCookies();
-            ObjectRepository.Driver.Manage()
-                .Timeouts().PageLoad = TimeSpan.FromSeconds(ObjectRepository.Config.GetPageLoadTimeOut());
-            ObjectRepository.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(ObjectRepository.Config.GetElementLoadTimeOut());
-            BrowserHelper.BrowserMaximize();
+                    default:
+                        throw new NoSutiableDriverFound("Driver Not Found : " + ObjectRepository.Config.GetBrowser().ToString());
+                }
+                ObjectRepository.Driver.Manage().Cookies.DeleteAllCookies();
+                ObjectRepository.Driver.Manage()
+                    .Timeouts().PageLoad = TimeSpan.FromSeconds(ObjectRepository.Config.GetPageLoadTimeOut());
+                ObjectRepository.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(ObjectRepository.Config.GetElementLoadTimeOut());
+                BrowserHelper.BrowserMaximize();
+                
             return ObjectRepository.Driver;
         }
-
-
         [AssemblyCleanup]
         //[AfterScenario()]
         public static void TearDown()
