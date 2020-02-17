@@ -16,16 +16,19 @@ using SeleniumExtras.PageObjects;
 namespace Ecom_framework.BaseClasses
 {
     [TestClass]
-   public class BaseClass
+    //common class which will use across the framework
+    public class BaseClass
     {
-
+       //This code is used to intialize webdriver
         public static IWebDriver driver=InitWebdriver();
+        //This method is used to get firefox profile
         private static FirefoxProfile GetFirefoxProfile()
         {
             FirefoxProfile profile = new FirefoxProfile();
             FirefoxProfileManager manager = new FirefoxProfileManager();
             return profile;
         }
+        //This method is used to get the firefoxoptions
         private static FirefoxOptions GetFirefoxOptions()
         {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
