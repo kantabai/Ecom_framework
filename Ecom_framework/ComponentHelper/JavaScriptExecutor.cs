@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
+﻿using System.Threading;
 using OpenQA.Selenium;
 using Ecom_framework.Settings;
 namespace Ecom_framework.ComponentHelper
@@ -46,6 +41,8 @@ namespace Ecom_framework.ComponentHelper
             ExecuteScript("arguments[0].click();", element);
             Thread.Sleep(300);
         }
+
+       
 
     }
 }

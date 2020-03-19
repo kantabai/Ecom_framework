@@ -11,6 +11,7 @@ namespace Ecom_framework
         Home obj = new Home();
         ContactUs contactusobj = new ContactUs();
         Sign_In_UI sign_in_obj = new Sign_In_UI();
+        Quickaddtocart Quickaddtocartobj = new Quickaddtocart();
         [TestMethod]
         public void TestMethod1()
         {
@@ -55,5 +56,17 @@ namespace Ecom_framework
             sign_in_obj.Verify_sign_hyperlink();
 
         }
+        [TestMethod]
+        public void Signin()
+        {
+            
+            sign_in_obj.signin();
+        }
+        [TestMethod]
+        public void quick_add_cart()
+        {
+            Quickaddtocartobj.quick_add_cart();
+        }
+        
     }
 }

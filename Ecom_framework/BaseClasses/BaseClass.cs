@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using log4net;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,7 +7,7 @@ using Ecom_framework.Configuration;
 using Ecom_framework.CustomException;
 using Ecom_framework.ComponentHelper;
 using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
+
 namespace Ecom_framework.BaseClasses
 {
     [TestClass]
@@ -52,6 +47,8 @@ namespace Ecom_framework.BaseClasses
         {
             ChromeOptions option = new ChromeOptions();
             option.AddArgument("start-maximized");
+            option.AddAdditionalCapability("useAutomationExtension", false);
+            option.AddArguments("--disable-infobars");
             return option;
         }
         private static FirefoxDriver GetFirefoxDriver()

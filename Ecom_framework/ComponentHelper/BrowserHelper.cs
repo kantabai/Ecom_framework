@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -30,20 +31,33 @@ namespace Ecom_framework.ComponentHelper
         {
             ObjectRepository.Driver.Navigate().Refresh();
         }
-        public static void SwitchToWindow(int index = 0)
+        //public static void SwitchToWindow(int index = 0)
+        //{
+        //    Thread.Sleep(1000);
+        //    ReadOnlyCollection<string> windows = ObjectRepository.Driver.WindowHandles;
+
+        //    if ((windows.Count - 1) < index)
+        //    {
+        //        throw new NoSuchWindowException("Invalid Browser Window Index" + index);
+        //    }
+
+
+        //    ObjectRepository.Driver.SwitchTo().Window(windows[index]);
+        //    Thread.Sleep(1000);
+        //    BrowserMaximize();
+
+        //}
+
+        public static void SwitchToWindowLast()
         {
-            Thread.Sleep(1000);
-            ReadOnlyCollection<string> windows = ObjectRepository.Driver.WindowHandles;
-
-            if ((windows.Count - 1) < index)
-            {
-                throw new NoSuchWindowException("Invalid Browser Window Index" + index);
-            }
+            ObjectRepository.Driver.SwitchTo().Window(ObjectRepository.Driver.WindowHandles.Last());
 
 
-            ObjectRepository.Driver.SwitchTo().Window(windows[index]);
-            Thread.Sleep(1000);
-            BrowserMaximize();
+        }
+        public static void SwitchToWindowfirst()
+        {
+            ObjectRepository.Driver.SwitchTo().Window(ObjectRepository.Driver.WindowHandles.First());
+
 
         }
         public static void SwitchToParent()
@@ -64,6 +78,12 @@ namespace Ecom_framework.ComponentHelper
         public static void SwitchToFrame(By locatot)
         {
             ObjectRepository.Driver.SwitchTo().Frame(ObjectRepository.Driver.FindElement(locatot));
+        }
+        public static void waitforsec()
+        {
+           ObjectRepository.Driver.Manage().Timeouts().ImplicitWait=TimeSpan.FromSeconds(20);
+
+
         }
 
     }
