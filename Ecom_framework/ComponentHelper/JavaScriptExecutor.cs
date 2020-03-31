@@ -41,8 +41,6 @@ namespace Ecom_framework.ComponentHelper
             ExecuteScript("arguments[0].click();", element);
             Thread.Sleep(300);
         }
-
        
-
     }
 }

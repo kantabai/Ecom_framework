@@ -4,6 +4,7 @@ using Ecom_framework.ComponentHelper;
 using Ecom_framework.BaseClasses;
 using SeleniumExtras.PageObjects;
 using Ecom_framework.Configuration;
+using Ecom_framework.Settings;
 namespace Ecom_framework.TestScript
 {
     [TestClass]
@@ -11,7 +12,7 @@ namespace Ecom_framework.TestScript
     {
         AppConfigReader obj = new AppConfigReader();
         private static IWebDriver driver;
-        public test()
+         public test()
         {
             driver = BaseClass.driver;
             PageFactory.InitElements(driver, this);
@@ -56,6 +57,8 @@ namespace Ecom_framework.TestScript
             NavigationHelper.NavigateToUrl(URL);
             BrowserHelper.BrowserMaximize();
             Mouseoverhelper.Domouseover(By.LinkText("SwitchTo"));
+            var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 30));
+            var element = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("content-section")));
             LinkHelper.ClickLink(By.LinkText("Windows"));
             LinkHelper.ClickLink(By.XPath("//a[contains(text(),'Open New Seperate Windows')]"));
             LinkHelper.ClickLink(By.XPath("//*[@id='Seperate']/button"));
@@ -81,6 +84,36 @@ namespace Ecom_framework.TestScript
 
 
         }
-        
+
+        [TestMethod]
+        public void verifylinkpresent()
+        {
+            string URL = obj.GetWebsite();
+            NavigationHelper.NavigateToUrl(URL);
+            BrowserHelper.BrowserMaximize();
+            Mouseoverhelper.Domouseover(By.LinkText("SwitchTo"));
+            IWebElement element = ObjectRepository.Driver.FindElement(By.XPath("//a[@href='Alerts.html']"));
+            bool value = element.Displayed;
+            if (value)
+            {
+                element.Click();
+            }
+            else
+            {
+                throw new ElementNotVisibleException();
+            }
+                
+        }
+        [TestMethod]
+        public void gettext()
+        {
+            string URL = obj.GetWebsite();
+            NavigationHelper.NavigateToUrl(URL);
+            BrowserHelper.BrowserMaximize();
+            Mouseoverhelper.Domouseover(By.LinkText("SwitchTo"));
+            IJavaScriptExecutor js = (IJavaScriptExecutor)ObjectRepository.Driver;
+            //string text = js.ExecuteScript("return document.getElementById('main').innerHTML").toString();
+            
+        }
     }
 }
